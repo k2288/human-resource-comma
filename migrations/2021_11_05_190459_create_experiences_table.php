@@ -18,9 +18,9 @@ class CreateExperiencesTable extends Migration
             $table->foreignId('user_id')->constrained(config("human-resource.users_table"))->onDelete("cascade");
             $table->string('company', 200)->nullable();
             $table->string('position', 200)->nullable();
-            $table->integer('start_date')->nullable();
+            $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->text("description")->nullable();
+            $table->text("description", 600)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

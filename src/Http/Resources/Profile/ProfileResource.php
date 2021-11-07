@@ -29,6 +29,7 @@ class ProfileResource extends JsonResource
             'study_field' => $this->study_field,
             'school' => $this->school,
             'description' => $this->description,
+            'user' => $this->whenLoaded('user'),
         ];
 
         return $data;

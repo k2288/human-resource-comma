@@ -16,17 +16,17 @@ trait HasHumanResource
         return $this->hasOne(Profile::class);
     }
 
-    public function educations()
+    public function education()
     {
         return $this->hasMany(Education::class);
     }
 
-    public function experiences()
+    public function experience()
     {
         return $this->hasMany(Experience::class);
     }
 
-    public function emergencyContacts()
+    public function emergencyContact()
     {
         return $this->hasMany(EmergencyContact::class);
     }
