@@ -9,7 +9,7 @@ use Raahin\HumanResource\Traits\Searchable;
 
 class Experience extends Model
 {
-    use HasFactory, SoftDeletes , Searchable;
+    use HasFactory, SoftDeletes, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +21,7 @@ class Experience extends Model
         'position',
         'start_date',
         'end_date',
+        "description"
     ];
 
     /**
@@ -33,6 +34,7 @@ class Experience extends Model
         'position',
         'start_date',
         'end_date',
+        "description"
     ];
 
     /**
