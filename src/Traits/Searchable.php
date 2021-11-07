@@ -37,10 +37,11 @@ trait Searchable
         if (!$search)
             return $query;
 
-        foreach ($columns as $column)
-            if ($this->isSearchable($column))
-                $query->orWhere($column, "LIKE", "%$search%");
-
+        $query->where(function ($q) use ($search, $columns) {
+            foreach ($columns as $column)
+                if ($this->isSearchable($column))
+                    $q->orWhere($column, "LIKE", "%$search%");
+        });
 
         return $query;
     }
