@@ -2,14 +2,14 @@
 
 namespace Raahin\HumanResource\Models;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Raahin\HumanResource\Traits\Searchable;
 
 class Profile extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes , Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +17,23 @@ class Profile extends Model
      * @var array
      */
     protected $fillable = [
+        'address',
+        'bank_account',
+        'Identification_no',
+        'gender',
+        'birth_date',
+        'children',
+        'study_field',
+        'school',
+        "description"
+    ];
+
+    /**
+     * The columns that can search in
+     *
+     * @var array
+     */
+    protected $searchable = [
         'address',
         'bank_account',
         'Identification_no',
