@@ -83,9 +83,11 @@ class EducationController extends Controller
      */
     public function update(EducationUpdateRequest $request, int $user, int $education)
     {
+        $education = $this->userModel::findOrFail($user)->education()->findOrFail($education);
+
         $this->userModel::findOrFail($user)->education()->update($request->validated(), $education);
 
-        $education = Education::findOrFail($education);
+        $education = $education->refresh();
 
         return new EducationResource($education);
     }
