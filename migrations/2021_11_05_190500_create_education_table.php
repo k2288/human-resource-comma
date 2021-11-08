@@ -19,6 +19,8 @@ class CreateEducationTable extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->string('school', 200)->nullable();
+            $table->string('study_field', 200)->nullable();
+            $table->string('grade', 200)->nullable();
             $table->text("description")->nullable();
             $table->softDeletes();
             $table->timestamps();
