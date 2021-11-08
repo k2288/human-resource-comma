@@ -9,7 +9,7 @@ use Raahin\HumanResource\Traits\Searchable;
 
 class Education extends Model
 {
-    use HasFactory, SoftDeletes , Searchable;
+    use HasFactory, SoftDeletes, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,21 @@ class Education extends Model
         'start_date',
         'end_date',
         'school',
-        "description"
+        'study_field',
+        'grade',
+    ];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        'start_date',
+        'end_date',
+        'school',
+        'study_field',
+        'grade',
     ];
 
     /**

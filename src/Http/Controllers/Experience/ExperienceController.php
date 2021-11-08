@@ -15,6 +15,11 @@ use Raahin\HumanResource\Models\Experience;
 class ExperienceController extends Controller
 {
 
+    /**
+     * contains user model namespace
+     *
+     * @var string $userModel
+     */
     private $userModel;
 
     public function __construct()
