@@ -1,5 +1,5 @@
 {
-  "name": "comma/human-resource",
+  "name": "hadikhah/human-resource",
   "description": "Human resource package for BPMS project",
   "autoload": {
     "psr-4": {
