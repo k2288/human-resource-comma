@@ -5,10 +5,11 @@ namespace Raahin\HumanResource\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Raahin\HumanResource\Traits\Searchable;
 
 class EmergencyContact extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +20,19 @@ class EmergencyContact extends Model
         'name',
         'phone',
         'mobile',
+        'description',
+    ];
+
+    /**
+     * The columns that can search in
+     *
+     * @var array
+     */
+    protected $searchable = [
+        'name',
+        'phone',
+        'mobile',
+        'description',
     ];
 
     /**

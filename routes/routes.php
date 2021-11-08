@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Raahin\HumanResource\Http\Controllers\Education\EducationController;
+use Raahin\HumanResource\Http\Controllers\EmergencyContact\EmergencyContactController;
 use Raahin\HumanResource\Http\Controllers\Experience\ExperienceController;
 use Raahin\HumanResource\Http\Controllers\Profile\ProfileController;
 
@@ -34,11 +35,28 @@ Route::middleware(["api"])->prefix("api/")->group(function () {
             ->name("experience.destroy");
 
         //        users educations routes
-        Route::get("/{user}/education", [EducationController::class, "index"])->name("education.index");
-        Route::post("/{user}/education", [EducationController::class, "store"])->name("education.store");
-        Route::get("/{user}/education/{education}", [EducationController::class, "show"])->name("education.show");
-        Route::put("/{user}/education/{education}", [EducationController::class, "update"])->name("education.update");
-        Route::delete("/{user}/education/{education}", [EducationController::class, "destroy"])->name("education.destroy");
+        Route::get("/{user}/education", [EducationController::class, "index"])
+            ->name("education.index");
+        Route::post("/{user}/education", [EducationController::class, "store"])
+            ->name("education.store");
+        Route::get("/{user}/education/{education}", [EducationController::class, "show"])
+            ->name("education.show");
+        Route::put("/{user}/education/{education}", [EducationController::class, "update"])
+            ->name("education.update");
+        Route::delete("/{user}/education/{education}", [EducationController::class, "destroy"])
+            ->name("education.destroy");
+
+        //        users emergency contacts routes
+        Route::get("/{user}/emergency-contact", [EmergencyContactController::class, "index"])
+            ->name("emergency-contact.index");
+        Route::post("/{user}/emergency-contact", [EmergencyContactController::class, "store"])
+            ->name("emergency-contact.store");
+        Route::get("/{user}/emergency-contact/{emergencyContact}", [EmergencyContactController::class, "show"])
+            ->name("emergency-contact.show");
+        Route::put("/{user}/emergency-contact/{emergencyContact}", [EmergencyContactController::class, "update"])
+            ->name("emergency-contact.update");
+        Route::delete("/{user}/emergency-contact/{emergencyContact}", [EmergencyContactController::class, "destroy"])
+            ->name("emergency-contact.destroy");
 
 
     });
