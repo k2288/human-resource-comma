@@ -29,6 +29,8 @@ class ExperienceController extends Controller
 
 
     /**
+     * the list of experiences of the given user with search and pagination
+     *
      * @param Request $request
      * @param int $user
      * @return ExperienceCollection
@@ -44,6 +46,8 @@ class ExperienceController extends Controller
     }
 
     /**
+     * store an experience for given user
+     *
      * @param ExperienceStoreRequest $request
      * @param int $user
      * @return ExperienceResource
@@ -56,6 +60,8 @@ class ExperienceController extends Controller
     }
 
     /**
+     * returns the given experience for given user
+     *
      * @param Request $request
      * @param int $user
      * @param int $experience
@@ -69,6 +75,8 @@ class ExperienceController extends Controller
     }
 
     /**
+     * updates the given experience for given user
+     *
      * @param ExperienceUpdateRequest $request
      * @param int $user
      * @param int $experience
@@ -76,14 +84,18 @@ class ExperienceController extends Controller
      */
     public function update(ExperienceUpdateRequest $request, int $user, int $experience): ExperienceResource
     {
+        $experience = $this->userModel::findOrFail($user)->experience()->findOrFail($experience);
+
         $this->userModel::findOrFail($user)->experience()->update($request->validated(), $experience);
 
-        $experience = Experience::findOrFail($experience);
+        $experience = $experience->refresh();
 
         return new ExperienceResource($experience);
     }
 
     /**
+     * soft deletes the experience for given user
+     *
      * @param int $user
      * @param int $experience
      * @return Response
