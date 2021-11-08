@@ -14,7 +14,6 @@ class HumanResourceServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 
     /**
@@ -24,6 +23,13 @@ class HumanResourceServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->loadMigrationsFrom(__DIR__ . "/../../migrations");
+        $this->loadRoutesFrom(__DIR__ . "/../../routes/routes.php");
+
+        $this->publishes([
+            __DIR__.'/../../config/main.php' => config_path('human-resource.php'),
+        ], 'config');
+
+
     }
 }
