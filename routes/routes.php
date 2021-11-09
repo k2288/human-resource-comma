@@ -6,7 +6,7 @@ use Raahin\HumanResource\Http\Controllers\EmergencyContact\EmergencyContactContr
 use Raahin\HumanResource\Http\Controllers\Experience\ExperienceController;
 use Raahin\HumanResource\Http\Controllers\Profile\ProfileController;
 
-Route::middleware(["api"])->prefix("api/")->group(function () {
+Route::name("hr.")->middleware(["api", "auth:api"])->prefix("api/hr/")->group(function () {
 
 
     Route::name("user.")->prefix("/user")->group(function () {
