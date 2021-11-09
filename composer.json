@@ -1,5 +1,5 @@
 {
-  "name": "comma/human-resource",
+  "name": "hadikhah/human-resource",
   "description": "Human resource package for BPMS project",
   "autoload": {
     "psr-4": {
@@ -14,8 +14,7 @@
   ],
   "require": {
     "php": "^7.2|^8.0",
-    "illuminate/support": "^6.0|^7.0|^8.0",
-    "comma/repository-pattern": "dev-master"
+    "illuminate/support": "^6.0|^7.0|^8.0"
   },
   "extra": {
     "laravel": {
