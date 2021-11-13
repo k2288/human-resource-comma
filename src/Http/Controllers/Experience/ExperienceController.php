@@ -40,7 +40,7 @@ class ExperienceController extends Controller
         $experiences = $this->userModel::findOrFail($user)->experience()
             ->search((string)$request->input("search", ""), $request->input("search_column"))
             ->orderBy($request->input("sort_column", "id"), $request->input("order", "desc"))
-            ->paginate($request->input("per_page", 10));
+            ->paginate($request->input("per_page", 10))->withQueryString();
 
         return new ExperienceCollection($experiences);
     }
@@ -106,5 +106,21 @@ class ExperienceController extends Controller
             ->findOrFail($experience)->delete();
 
         return response()->noContent();
+    }
+
+    /**
+     * logged-in user's experiences
+     *
+     * @param Request $request
+     * @return ExperienceCollection
+     */
+    public function experience(Request $request): ExperienceCollection
+    {
+        $experience = auth()->user()->experience()
+            ->search((string)$request->input("search", ""), $request->input("search_column"))
+            ->orderBy($request->input("sort_column", "id"), $request->input("order", "desc"))
+            ->paginate($request->input("per_page", 10))->withQueryString();
+
+        return new ExperienceCollection($experience);
     }
 }

@@ -30,7 +30,8 @@ class ProfileController extends Controller
      */
     public function show(Request $request, int $user): ProfileResource
     {
-        $profile = $this->userModel::findOrFail($user)->profile;
+        $profile = $this->userModel::findOrFail($user)->profile()->firstOrCreate([]);
+
         return new ProfileResource($profile);
     }
 
@@ -62,6 +63,18 @@ class ProfileController extends Controller
         $this->userModel::findOrFail($user)->profile()->delete();
 
         return response()->noContent();
+    }
+
+    /**
+     * logged-in user's profile information
+     *
+     * @return ProfileResource
+     */
+    public function profile()
+    {
+        $profile=auth()->user()->profile()->firstOrCreate();
+
+        return new ProfileResource($profile);
     }
 
 

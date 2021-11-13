@@ -38,7 +38,7 @@ class EmergencyContactController extends Controller
         $emergencyContacts = $this->userModel::findOrFail($user)->emergencyContact()
             ->search((string)$request->input("search", ""), $request->input("search_column"))
             ->orderBy($request->input("sort_column", "id"), $request->input("order", "desc"))
-            ->paginate($request->input("per_page", 10));
+            ->paginate($request->input("per_page", 10))->withQueryString();
 
         return new EmergencyContactCollection($emergencyContacts);
     }
@@ -104,5 +104,21 @@ class EmergencyContactController extends Controller
         $this->userModel::findOrFail($user)->emergencyContact()->findOrFail($emergencyContact)->delete();
 
         return response()->noContent();
+    }
+
+    /**
+     * logged-in user's emergency contacts
+     *
+     * @param Request $request
+     * @return EmergencyContactCollection
+     */
+    public function emergencyContact(Request $request): EmergencyContactCollection
+    {
+        $emergencyContact = auth()->user()->emergencyContact()
+            ->search((string)$request->input("search", ""), $request->input("search_column"))
+            ->orderBy($request->input("sort_column", "id"), $request->input("order", "desc"))
+            ->paginate($request->input("per_page", 10))->withQueryString();
+
+        return new EmergencyContactCollection($emergencyContact);
     }
 }

@@ -7,12 +7,14 @@ use Raahin\HumanResource\Http\Controllers\Experience\ExperienceController;
 use Raahin\HumanResource\Http\Controllers\Profile\ProfileController;
 
 Route::name("hr.")->middleware(["api", "auth:api"])->prefix("api/hr/")->group(function () {
-
+    //        logged-in user information
+    Route::get("/profile", [ProfileController::class, "profile"])->name("profile");
+    Route::get("/experience", [ExperienceController::class, "experience"])->name("experience");
+    Route::get("/education", [EducationController::class, "education"])->name("education");
+    Route::get("/emergency-contact", [EmergencyContactController::class, "emergencyContact"])
+        ->name("emergency-contact");
 
     Route::name("user.")->prefix("/user")->group(function () {
-
-        //        users eager load with all relationship routes
-        //        Route::get("/{user}/full-profile", [ProfileController::class, "index"])->name("full-profile");
 
         //        users profiles routes
         Route::get("/{user}/profile", [ProfileController::class, "show"])

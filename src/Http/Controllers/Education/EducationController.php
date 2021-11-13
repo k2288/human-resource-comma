@@ -39,7 +39,7 @@ class EducationController extends Controller
         $educations = $this->userModel::findOrFail($user)->education()
             ->search((string)$request->input("search", ""), $request->input("search_column"))
             ->orderBy($request->input("sort_column", "id"), $request->input("order", "desc"))
-            ->paginate($request->input("per_page", 10));
+            ->paginate($request->input("per_page", 10))->withQueryString();
 
         return new EducationCollection($educations);
     }
@@ -106,5 +106,21 @@ class EducationController extends Controller
             ->findOrFail($education)->delete();
 
         return response()->noContent();
+    }
+
+    /**
+     * logged-in user's educations
+     *
+     * @param Request $request
+     * @return EducationCollection
+     */
+    public function education(Request $request): EducationCollection
+    {
+        $education = auth()->user()->education()
+            ->search((string)$request->input("search", ""), $request->input("search_column"))
+            ->orderBy($request->input("sort_column", "id"), $request->input("order", "desc"))
+            ->paginate($request->input("per_page", 10))->withQueryString();
+
+        return new EducationCollection($education);
     }
 }
