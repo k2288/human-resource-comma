@@ -3,7 +3,7 @@
 
 ## نصب
 
-برای نصب پکیج ابتدا کد زیر را composer.json و در بخش repositories قرار دهید.
+برای نصب پکیج ابتدا کد زیر را در فایل composer.json و در بخش repositories قرار دهید.
 
 ```json
 "repositories": [
@@ -43,7 +43,7 @@ class User extends Authenticatable
 ```bash
 php artisan vendor:publish
 ```
-این دستور فایل human-resource.php را به مسیر configs اضافه میکند که به شامل کد های زیر است.
+این دستور فایل human-resource.php را به مسیر configs اضافه میکند که شامل کد های زیر است.
 
 ```php
 <?php
