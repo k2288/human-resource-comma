@@ -12,6 +12,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Raahin\HumanResource\Models\Experience;
 
+/**
+ * @group human-resource experience
+ *
+ * APIs for managing HR experience
+ */
 class ExperienceController extends Controller
 {
 

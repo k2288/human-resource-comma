@@ -11,7 +11,11 @@ use Raahin\HumanResource\Http\Resources\Education\EducationResource;
 use Raahin\HumanResource\Models\Education;
 use App\Http\Controllers\Controller;
 
-
+/**
+ * @group human-resource education
+ *
+ * APIs for managing HR education
+ */
 class EducationController extends Controller
 {
     /**

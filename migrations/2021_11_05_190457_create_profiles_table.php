@@ -16,14 +16,21 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained(config("human-resource.users_table"))->onDelete("cascade");
+            $table->string('home_city')->nullable();
+            $table->string('birth_city')->nullable();
             $table->text('address', 500)->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string("father_name")->nullable();
             $table->string('bank_account', 200)->nullable();
             $table->string('Identification_no', 200)->nullable();
+            $table->string('identity_card_issue_place', 200)->nullable();
             $table->enum('gender', ["male", "female"])->nullable();
             $table->date('birth_date')->nullable();
             $table->enum('marital_status', ["married", "single"])->nullable();
+            $table->enum('military_service_status', ["finished", "exempted", "educational_exemption", "other"])->nullable();
             $table->integer('children')->nullable();
             $table->string('study_field', 200)->nullable();
+            $table->string('study_degree', 200)->nullable();
             $table->string('school', 200)->nullable();
             $table->text("description", 600)->nullable();
             $table->softDeletes();

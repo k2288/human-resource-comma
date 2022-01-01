@@ -9,7 +9,7 @@ use Raahin\HumanResource\Traits\Searchable;
 
 class Profile extends Model
 {
-    use HasFactory, SoftDeletes , Searchable;
+    use HasFactory, SoftDeletes, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,12 +20,18 @@ class Profile extends Model
         'address',
         'bank_account',
         'Identification_no',
+        'identity_card_issue_place',
         'gender',
         'birth_date',
         'children',
         'study_field',
+        'study_degree',
         'school',
-        "description"
+        "description",
+        "home_city",
+        "birth_city",
+        "postal_code",
+        "father_name"
     ];
 
     /**
@@ -41,8 +47,14 @@ class Profile extends Model
         'birth_date',
         'children',
         'study_field',
+        "study_degree",
         'school',
-        "description"
+        'identity_card_issue_place',
+        "description",
+        "home_city",
+        "birth_city",
+        "postal_code",
+        "father_name"
     ];
 
     /**
@@ -51,7 +63,7 @@ class Profile extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
+        'id'         => 'integer',
         'birth_date' => 'date',
     ];
 

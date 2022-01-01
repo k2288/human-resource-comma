@@ -9,7 +9,11 @@ use Raahin\HumanResource\Http\Requests\Profile\ProfileUpdateRequest;
 use App\Http\Controllers\Controller;
 use Raahin\HumanResource\Http\Resources\Profile\ProfileResource;
 
-
+/**
+ * @group human-resource profile
+ *
+ * APIs for managing HR profile
+ */
 class ProfileController extends Controller
 {
 

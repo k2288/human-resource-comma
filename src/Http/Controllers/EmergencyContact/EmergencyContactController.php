@@ -11,13 +11,14 @@ use Raahin\HumanResource\Http\Resources\EmergencyContact\EmergencyContactCollect
 use Raahin\HumanResource\Http\Resources\EmergencyContact\EmergencyContactResource;
 use App\Http\Controllers\Controller;
 
+/**
+ * @group human-resource emergency contacts
+ *
+ * APIs for managing HR emergency contacts
+ */
 class EmergencyContactController extends Controller
 {
-    /**
-     * contains user model namespace
-     *
-     * @var string $userModel
-     */
+
     private $userModel;
 
     public function __construct()
